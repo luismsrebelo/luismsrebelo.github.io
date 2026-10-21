@@ -8,6 +8,7 @@ This repository contains the source for [luismsrebelo.github.io](https://luismsr
 - Edit the homepage and CV in `_pages/about.md` and `_pages/cv.md`.
 - Add publications, talks, teaching, projects, and posts to `_publications/`, `_talks/`, `_teaching/`, `_portfolio/`, and `_posts/`.
 - Add downloadable documents to `files/` and a profile photo to `images/profile.png`.
+- The current CV PDF is available in `files/`.
 - Change the header links in `_data/navigation.yml`.
 
 The repository includes the Academic Pages GitHub Actions workflow. In the repository settings, set **Settings > Pages > Build and deployment > Source** to **GitHub Actions** to publish the site.

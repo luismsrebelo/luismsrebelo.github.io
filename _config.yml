@@ -9,10 +9,10 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default" # The available themes options are "default", "air", "sunrise", "mint", "dirt" and "contrast"
-title                    : "Luis Rebelo"
+title                    : "Luís Rebelo"
 title_separator          : "-"
-name                     : &name "Luis Rebelo"
-description              : &description "Personal and professional website of Luis Rebelo"
+name                     : &name "Luís Rebelo"
+description              : &description "Software Engineer in AI and Health Technology"
 url                      : https://luismsrebelo.github.io # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -24,13 +24,13 @@ repository               : "luismsrebelo/luismsrebelo.github.io"
 author:
   # Biographic information
   avatar           :
-  name             : "Luis Rebelo"
+  name             : "Luís Rebelo"
   pronouns         : # example: "she/her"  
-  bio              : "Academic and professional profile"
-  location         :
-  employer         :
-  uri              : # URL
-  email            :
+  bio              : "Software Engineer · AI & Health Technology"
+  location         : "Portugal"
+  employer         : "Macroanalytica"
+  uri              : "https://cienciavitae.pt/6B1D-69E1-1370"
+  email            : "loumrebelo@gmail.com"
 
   # Academic websites
   academia         : # URL
@@ -38,7 +38,7 @@ author:
   googlescholar    :
   inspire-hep      : # URL
   impactstory      : # URL
-  orcid            :
+  orcid            : "https://orcid.org/0009-0005-3219-6903"
   semantic         : # URL
   ssrn             : # URL
   pubmed           :
@@ -66,7 +66,7 @@ author:
   keybase          : # Username
   instagram        : # Username
   lastfm           : # Username
-  linkedin         : # Username
+  linkedin         : "luis-rebelo"
   mastodon         : # URL
   medium           : # URL
   pinterest        : # Username
