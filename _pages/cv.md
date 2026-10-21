@@ -9,28 +9,55 @@ redirect_from:
 
 {% include base_path %}
 
-My curriculum vitae is being prepared. This page will be updated with my education, professional experience, research, and selected projects.
+Software Engineer in AI and Health Technology. PhD student in Biomedical Engineering and Biophysics. Founder and Software Engineer at Macroanalytica, with experience in software development, digital content, project management, product ownership, and entrepreneurship.
 
-{% if site.publications.size > 0 %}
-Publications
-======
-  <ul>{% for post in site.publications reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-{% endif %}
+[Download the full CV (PDF)](/files/luis-rebelo-curriculum-vitae-2026.pdf)
 
-{% if site.talks.size > 0 %}
-Talks
-======
-  <ul>{% for post in site.talks reversed %}
-    {% include archive-single-talk-cv.html %}
-  {% endfor %}</ul>
-{% endif %}
+## Experience
 
-{% if site.teaching.size > 0 %}
-Teaching
-======
-  <ul>{% for post in site.teaching reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-{% endif %}
+### Founder & Software Engineer — Macroanalytica
+*May 2022 – Present · IT Solutions*
+
+### Vodafone Portugal
+*November 2013 – April 2022*
+
+- **Product Owner** · December 2018 – April 2022
+- **Content Management Specialist** · November 2013 – December 2018
+
+### Full Stack Engineer — Mindshaker
+*October 2012 – July 2013 · Digital Creativity for Culture & Business*
+
+## Education
+
+### PhD in Biomedical Engineering and Biophysics
+*September 2026 – Present · Faculty of Sciences, University of Lisbon*
+
+### BSc in Systems and Computer Management
+*October 2023 – July 2026 · Atlântica*
+
+### Vocational Course in IT Systems Management and Programming
+*September 2009 – June 2012 · QNQ Level 4 · Escola Secundária Rainha D. Leonor*
+
+## Core Competencies
+
+- **Technology:** Software engineering, Python, C/C++, Linux systems, data structures and algorithms, databases and SQL, edge computing (RISC-V), IT systems management
+- **Product and delivery:** Product ownership, project management
+- **AI and research:** Artificial intelligence, machine learning, biomedical engineering, research
+- **Professional:** Entrepreneurship, training and knowledge transfer
+
+## Certifications
+
+- Certificado de Competências Pedagógicas (CCP), No. F792234/2026
+- EITCA/AI Artificial Intelligence Academy
+- EITCA/IS Information Technologies Security Academy
+- MicroMasters in AI and Machine Learning in Healthcare
+- Introduction to RISC-V (LFD110)
+
+## Contact and Profiles
+
+- Email: [loumrebelo@gmail.com](mailto:loumrebelo@gmail.com)
+- [LinkedIn](https://linkedin.com/in/luis-rebelo)
+- [ORCID](https://orcid.org/0009-0005-3219-6903)
+- [Ciência Vitae](https://cienciavitae.pt/6B1D-69E1-1370)
+- [GitLab](https://gitlab.com/loumrebelo)
+- [GitHub](https://github.com/luismsrebelo)
