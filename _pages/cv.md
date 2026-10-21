@@ -15,6 +15,9 @@ Software Engineer in AI and Health Technology. PhD student in Biomedical Enginee
 
 ## Experience
 
+### Vocational Course Professor — Information and Communication Technologies
+*September 2026 – Present · INETESE - Associação para o Ensino e Formação · Contract*
+
 ### Founder & Software Engineer — Macroanalytica
 *May 2022 – Present · IT Solutions*
 
@@ -55,9 +58,7 @@ Software Engineer in AI and Health Technology. PhD student in Biomedical Enginee
 
 ## Contact and Profiles
 
-- Email: [loumrebelo@gmail.com](mailto:loumrebelo@gmail.com)
 - [LinkedIn](https://linkedin.com/in/luis-rebelo)
 - [ORCID](https://orcid.org/0009-0005-3219-6903)
 - [Ciência Vitae](https://cienciavitae.pt/6B1D-69E1-1370)
-- [GitLab](https://gitlab.com/loumrebelo)
 - [GitHub](https://github.com/luismsrebelo)
