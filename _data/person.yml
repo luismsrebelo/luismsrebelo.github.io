@@ -1,0 +1,52 @@
+# Structured facts about the site owner.
+# Used for schema.org Person JSON-LD (search engines) and /llms.txt (AI assistants).
+# Keep this in sync with the CV.
+
+name: "Luís Rebelo"
+full_name: "Luís Miguel da Silva Rebelo"
+given_name: "Luís"
+family_name: "Rebelo"
+job_title: "PhD student in Biomedical Engineering and Biophysics · Software Engineer"
+summary: >-
+  PhD student in Biomedical Engineering and Biophysics at the Faculty of Sciences,
+  University of Lisbon (FCUL), with over 12 years of professional experience in
+  software development, digital transformation, product management and
+  entrepreneurship. Founder and Software Engineer at Macroanalytica, previously at
+  Vodafone Portugal. Research focus: applying Artificial Intelligence and Digital
+  Health technologies to real-world healthcare challenges. Certified trainer (CCP)
+  teaching ICT in vocational education.
+country: "Portugal"
+orcid: "0009-0005-3219-6903"
+ciencia_id: "6B1D-69E1-1370"
+
+affiliation:
+  name: "Faculty of Sciences, University of Lisbon"
+  alternate_name: "FCUL — Faculdade de Ciências da Universidade de Lisboa"
+  url: "https://ciencias.ulisboa.pt"
+
+works_for:
+  - name: "Macroanalytica"
+    role: "Founder & Software Engineer"
+  - name: "Inetese"
+    role: "ICT Trainer (vocational education)"
+
+alumni_of:
+  - name: "Atlântica University"
+    degree: "BSc in Systems and Computer Management"
+  - name: "Escola Secundária Rainha D. Leonor"
+    degree: "Vocational Diploma in IT Systems Management and Programming"
+
+knows_about:
+  - "Artificial Intelligence"
+  - "Machine Learning in Healthcare"
+  - "Digital Health"
+  - "Digital Twins"
+  - "Computer Simulation"
+  - "Edge Computing"
+  - "RISC-V"
+  - "Biomedical Data Analysis"
+  - "Biomedical Engineering"
+  - "Software Engineering"
+  - "Python"
+  - "C/C++"
+  - "Product Management"

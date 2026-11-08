@@ -1,7 +1,8 @@
 {
-  "name": "academic-pages",
-  "version": "0.8.1.1",
-  "description": "Academic Pages Mistakes Jekyll theme npm build scripts",
+  "name": "luismsrebelo-website",
+  "version": "1.0.0",
+  "description": "Personal website of Luís Rebelo (JS build scripts)",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/academicpages/academicpages.github.io"
@@ -11,10 +12,7 @@
     "theme",
     "minimal"
   ],
-  "contributors": [
-    "Michael Rose",
-    "Robert Zupko"
-  ],
+  "author": "Luís Rebelo",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/academicpages/academicpages.github.io/issues"

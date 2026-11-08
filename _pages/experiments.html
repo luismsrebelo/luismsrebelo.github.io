@@ -1,0 +1,17 @@
+---
+layout: archive
+permalink: /experiments/
+title: "Experiments"
+description: "Interactive experiments by Luís Rebelo: visual, in-browser explainers of machine learning methods, neural networks and AI for healthcare."
+schema_type: "CollectionPage"
+author_profile: true
+---
+
+{% include base_path %}
+
+Small interactive projects that run entirely in your browser. They are a place to learn in public: each one explains an idea visually and lets you change the inputs and watch what happens.
+
+{% assign experiments = site.experiments | sort: "date" | reverse %}
+{% for post in experiments %}
+  {% include archive-single.html %}
+{% endfor %}

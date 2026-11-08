@@ -1,0 +1,50 @@
+---
+layout: null
+sitemap: false
+permalink: /llms.txt
+---
+{%- assign p = site.data.person -%}
+{%- assign base = site.url | append: site.baseurl -%}
+# {{ p.full_name }} ({{ p.name }})
+
+> {{ site.description }}
+
+{{ p.summary }}
+
+## Key facts
+
+- Name: {{ p.full_name }} (publishes as "{{ p.name }}")
+- Current role: PhD student in Biomedical Engineering and Biophysics, {{ p.affiliation.name }} (since September 2026)
+- Also: Founder & Software Engineer at Macroanalytica (since May 2022); ICT trainer in vocational education at Inetese (since 2026)
+- Previously: Product Owner and Content Management Specialist at Vodafone Portugal (2013–2022); Full Stack Engineer at Mindshaker (2012–2013)
+- Education: BSc in Systems and Computer Management, Atlântica University (2023–2026)
+- Research interests: {{ p.knows_about | slice: 0, 8 | join: "; " }}
+- Country: {{ p.country }}
+- ORCID: https://orcid.org/{{ p.orcid }}
+- Ciência Vitae: https://cienciavitae.pt/{{ p.ciencia_id }}
+- GitHub: https://github.com/{{ site.author.github }}
+- LinkedIn: https://www.linkedin.com/in/{{ site.author.linkedin }}
+
+## Main pages
+
+- [About]({{ base }}/): profile, current role and research focus
+- [Curriculum Vitae]({{ base }}/cv/): education, experience, teaching, certifications and skills
+- [CV (PDF)]({{ base }}/files/luis-rebelo-curriculum-vitae-2026.pdf): downloadable full CV
+- [Blog]({{ base }}/blog/): writing on the PhD journey, AI in healthcare and biomedical engineering
+- [Experiments]({{ base }}/experiments/): interactive visual explainers
+
+## Blog posts
+{% for post in site.posts %}
+- [{{ post.title }}]({{ base }}{{ post.url }}) ({{ post.date | date: "%Y-%m-%d" }}): {{ post.description | default: post.excerpt | strip_html | normalize_whitespace | strip }}
+{%- endfor %}
+
+## Experiments
+{% for e in site.experiments %}
+- [{{ e.title }}]({{ base }}{{ e.url }}): {{ e.description | strip_html | normalize_whitespace | strip }}
+{%- endfor %}
+
+## Optional
+
+- [Full text of all pages for LLMs]({{ base }}/llms-full.txt)
+- [Atom feed]({{ base }}/feed.xml)
+- [XML sitemap]({{ base }}/sitemap.xml)

@@ -3,3 +3,6 @@
 {% include analytics.html %}
 
 {% include comments-providers/scripts.html %}
+
+{% if page.extra_js %}{% for js in page.extra_js %}<script defer src="{{ js | relative_url }}"></script>
+{% endfor %}{% endif %}

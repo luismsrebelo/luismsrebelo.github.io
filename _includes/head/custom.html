@@ -17,6 +17,10 @@
 <link rel="icon" type="image/png" href="{{ base_path }}/images/favicon-192x192.png" sizes="192x192"/>
 <link rel="manifest" href="{{ base_path }}/images/manifest.json"/>
 <link rel="icon" href="/images/favicon.ico"/>
-<meta name="theme-color" content="var(--global-bg-color)"/>
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)"/>
+<meta name="theme-color" content="#1a1d21" media="(prefers-color-scheme: dark)"/>
+
+{% if page.extra_css %}{% for css in page.extra_css %}<link rel="stylesheet" href="{{ css | relative_url }}">
+{% endfor %}{% endif %}
 
 <!-- end custom head snippets -->

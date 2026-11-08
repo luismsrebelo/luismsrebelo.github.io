@@ -1,0 +1,47 @@
+---
+layout: null
+sitemap: false
+permalink: /llms-full.txt
+---
+{%- assign base = site.url | append: site.baseurl -%}
+{%- assign about = site.pages | where: "url", "/" | first -%}
+{%- assign cv = site.pages | where: "url", "/cv/" | first -%}
+# {{ site.data.person.full_name }} — full site text
+
+> {{ site.description }}
+
+Source: {{ base }}/ — this file concatenates the main pages, blog posts and experiment write-ups as plain text for language models.
+
+---
+
+## About
+URL: {{ base }}/
+
+{{ about.content | strip_html | strip }}
+
+---
+
+## Curriculum Vitae
+URL: {{ base }}/cv/
+
+{{ cv.content | strip_html | strip }}
+
+{% for post in site.posts %}
+---
+
+## Blog: {{ post.title }}
+URL: {{ base }}{{ post.url }}
+Published: {{ post.date | date: "%Y-%m-%d" }}
+Author: {{ site.data.person.name }}
+
+{{ post.content | strip_html | strip }}
+{% endfor %}
+
+{% for e in site.experiments %}
+---
+
+## Experiment: {{ e.title }}
+URL: {{ base }}{{ e.url }}
+
+{{ e.content | strip_html | strip }}
+{% endfor %}

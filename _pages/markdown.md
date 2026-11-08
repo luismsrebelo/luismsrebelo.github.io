@@ -1,4 +1,6 @@
 ---
+sitemap: false
+robots: "noindex, follow"
 permalink: /markdown/
 title: "Markdown"
 author_profile: true

@@ -12,7 +12,7 @@ site_theme               : "default" # The available themes options are "default
 title                    : "Luís Rebelo"
 title_separator          : "-"
 name                     : &name "Luís Rebelo"
-description              : &description "Software Engineer in AI and Health Technology"
+description              : &description "Luís Rebelo is a PhD student in Biomedical Engineering and Biophysics at the University of Lisbon and a software engineer working on artificial intelligence and machine learning for healthcare."
 url                      : https://luismsrebelo.github.io # The base hostname & protocol for your site e.g. "https://[your GitHub username].github.io",
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -26,7 +26,7 @@ author:
   avatar           :
   name             : "Luís Rebelo"
   pronouns         : # example: "she/her"  
-  bio              : "Software Engineer · AI & Health Technology"
+  bio              : "PhD student in Biomedical Engineering & Biophysics (FCUL) · Software Engineer · AI in Healthcare"
   location         : "Portugal"
   employer         : "Macroanalytica"
   uri              : "https://cienciavitae.pt/6B1D-69E1-1370"
@@ -144,13 +144,18 @@ facebook:
   app_id                 :
   publisher              :
 og_image                 : og-image.png   # Social media default site image (lives in /images/)
-og_description           :  # Social media default site image description
+og_image_alt             : "Luís Rebelo — PhD student in Biomedical Engineering and Biophysics, AI in Healthcare"
+og_description           : *description
 # For specifying social profiles
 # - https://developers.google.com/structured-data/customize/social-profiles
 social:
-  type                   : # Person or Organization (defaults to Person)
-  name                   : # If the user or organization name differs from the site's name
-  links: # An array of links to social media profiles
+  type                   : Person
+  name                   : "Luís Rebelo"
+  links: # Profiles used for schema.org "sameAs" (entity disambiguation for search engines and AI assistants)
+    - "https://orcid.org/0009-0005-3219-6903"
+    - "https://cienciavitae.pt/6B1D-69E1-1370"
+    - "https://www.linkedin.com/in/luis-rebelo"
+    - "https://github.com/luismsrebelo"
 
 
 # Analytics
@@ -190,6 +195,12 @@ exclude:
   - package.json*
   - Rakefile
   - README
+  - README.md
+  - "*.ipynb"
+  - talkmap.py
+  - markdown_generator
+  - scripts
+  - docker-compose.yaml
   - tmp
   - vendor
 keep_files:
@@ -233,6 +244,9 @@ collections:
   talks:
     output: true
     permalink: /:collection/:path/
+  experiments:
+    output: true
+    permalink: /:collection/:path/
 
 
 # These settings control how pages and collections are included in the site
@@ -245,9 +259,31 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
-      comments: true
+      comments: false
       share: true
       related: true
+      permalink: /blog/:title/
+  # Keep template sample files out of the XML sitemap; only the CV PDF is listed.
+  - scope:
+      path: "files"
+    values:
+      sitemap: false
+  - scope:
+      path: "files/luis-rebelo-curriculum-vitae-2026.pdf"
+    values:
+      sitemap: true
+  - scope:
+      path: "talkmap"
+    values:
+      sitemap: false
+  # _experiments
+  - scope:
+      path: ""
+      type: experiments
+    values:
+      layout: single
+      author_profile: true
+      share: true
   # _pages
   - scope:
       path: ""
