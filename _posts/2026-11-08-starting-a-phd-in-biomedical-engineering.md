@@ -60,7 +60,7 @@ A few habits I'm committing to:
 2. **Writing every week.** I write my notes in LaTeX, and some of them will become posts here. Writing exposes gaps in understanding faster than anything else.
 3. **Reproducible by default.** Every experiment lives in a repository with its environment pinned and a README explaining how to re-run it.
 4. **Learning in public.** The [Experiments](/experiments/) section of this site is where I build small interactive explainers. The first is a [visual guide to machine learning methods and neural networks](/experiments/machine-learning-visual-guide/), made partly to sharpen my own intuitions.
-5. **Keeping one foot in practice.** I'll keep building software at Macroanalytica and teaching. I see these as a source of grounding, not a distraction.
+5. **Keeping one foot in practice.** I'll keep building software and teaching. I see these as a source of grounding, not a distraction.
 
 ## Key takeaways
 
