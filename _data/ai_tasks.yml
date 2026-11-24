@@ -1,0 +1,374 @@
+# AI task taxonomy used by the "visual map of AI model types" blog post.
+# in/out keys must exist in `labels` below. gen: true = the task creates new
+# free-form content; false = it analyses input (labels, locations, numbers, vectors).
+
+labels:
+  text: "text"
+  image: "image"
+  video: "video"
+  audio: "audio"
+  document: "document"
+  table: "table"
+  timeseries: "time series"
+  "3d": "3D"
+  graph: "graph"
+  environment: "environment state"
+  any: "any"
+  label: "label"
+  boxes: "boxes"
+  mask: "pixel mask"
+  keypoints: "keypoints"
+  depth: "depth map"
+  number: "number"
+  score: "similarity score"
+  vector: "vector (embedding)"
+  ranking: "ranking"
+  action: "action"
+
+categories:
+  - key: multimodal
+    name: "Multimodal"
+    blurb: "Models that combine several kinds of data, for example an image and a question about it."
+    tasks:
+      - name: "Audio-Text-to-Text"
+        in: [audio, text]
+        out: [text]
+        gen: true
+        what: "Listens to audio and follows a text instruction about it, such as \"summarise this recording\" or \"what is the speaker worried about?\"."
+        health: "Drafting a structured clinical note from a recorded consultation, for the clinician to review and sign."
+      - name: "Image-Text-to-Text"
+        in: [image, text]
+        out: [text]
+        gen: true
+        what: "Vision-language models: look at an image and answer, describe or reason about it in free text, guided by a prompt."
+        health: "Producing a draft description of a chest X-ray or a skin photo as a second reader, always reviewed by a specialist."
+      - name: "Image-Text-to-Image"
+        in: [image, text]
+        out: [image]
+        gen: true
+        what: "Edits or transforms an image following a text instruction (\"make the background white\", \"show this in winter\")."
+        health: "Research on data augmentation: creating controlled variations of medical images to test whether a classifier is robust."
+      - name: "Image-Text-to-Video"
+        in: [image, text]
+        out: [video]
+        gen: true
+        what: "Animates a still image according to a text description."
+        health: "Turning a static anatomical illustration into a short patient-education clip, such as how a heart valve opens and closes."
+      - name: "Visual Question Answering"
+        in: [image, text]
+        out: [text]
+        gen: false
+        what: "Answers a short, specific question about an image, often with one word or a short phrase."
+        health: "Research benchmarks ask questions like \"Is there a fracture?\" or \"Which organ is shown?\" about radiology images."
+      - name: "Document Question Answering"
+        in: [document, text]
+        out: [text]
+        gen: false
+        what: "Reads a scanned or photographed document, including its layout, and answers questions about it."
+        health: "Extracting the dose and frequency from a scanned prescription, or a value from a PDF lab report."
+      - name: "Video-Text-to-Text"
+        in: [video, text]
+        out: [text]
+        gen: true
+        what: "Watches a video and answers questions or writes a description following a prompt."
+        health: "Summarising the steps in a surgical video for training, or describing movement patterns in a gait-assessment recording."
+      - name: "Visual Document Retrieval"
+        in: [text, document]
+        out: [ranking]
+        gen: false
+        what: "Finds the most relevant pages in a collection of document images (scans, slides, PDFs with figures) for a text query."
+        health: "Searching hundreds of scanned clinical guidelines or archived records for the page that answers a question."
+      - name: "Any-to-Any"
+        in: [any]
+        out: [any]
+        gen: true
+        what: "General models that accept and produce several modalities in one conversation: text, images, audio and more."
+        health: "An assistant that takes a photo of a wound plus a spoken description and replies with spoken or written care instructions."
+
+  - key: vision
+    name: "Computer Vision"
+    blurb: "Models that understand or create images and video."
+    tasks:
+      - name: "Image Classification"
+        in: [image]
+        out: [label]
+        gen: false
+        what: "Assigns one (or several) labels from a fixed list to a whole image."
+        health: "Grading diabetic retinopathy in retinal photographs or classifying skin lesions as benign or suspicious."
+      - name: "Object Detection"
+        in: [image]
+        out: [boxes, label]
+        gen: false
+        what: "Finds objects in an image and draws a labelled box around each one."
+        health: "Locating lung nodules on CT slices or counting cells and parasites in microscopy images."
+      - name: "Image Segmentation"
+        in: [image]
+        out: [mask]
+        gen: false
+        what: "Labels every pixel, giving the exact outline of each structure rather than a box."
+        health: "Outlining tumours and organs at risk for radiotherapy planning, or measuring the volume of a heart chamber."
+      - name: "Mask Generation"
+        in: [image]
+        out: [mask]
+        gen: false
+        what: "Produces masks for every object in an image, often from a click or a box as a prompt, without knowing the class names."
+        health: "Interactive annotation tools: a clinician clicks on an organ and the outline appears, which speeds up building training datasets."
+      - name: "Zero-Shot Image Classification"
+        in: [image, text]
+        out: [label]
+        gen: false
+        what: "Classifies an image into labels you write at run time, with no training on those specific labels."
+        health: "Quickly sorting a large image archive by type (X-ray, CT, MRI, ultrasound, photograph) before building a dataset."
+      - name: "Zero-Shot Object Detection"
+        in: [image, text]
+        out: [boxes, label]
+        gen: false
+        what: "Detects objects described in free text (\"scalpel\", \"gauze\"), even if the model was never trained on that class."
+        health: "Finding and counting surgical instruments in operating-room video without collecting a labelled dataset first."
+      - name: "Keypoint Detection"
+        in: [image]
+        out: [keypoints]
+        gen: false
+        what: "Finds specific points, such as body joints or facial landmarks, and their positions."
+        health: "Tracking joint angles during rehabilitation exercises, or measuring posture and gait from ordinary video."
+      - name: "Depth Estimation"
+        in: [image]
+        out: [depth]
+        gen: false
+        what: "Estimates how far each pixel is from the camera, turning a flat image into a depth map."
+        health: "Reconstructing 3D surfaces during endoscopy, or measuring distances for fall-risk monitoring at home."
+      - name: "Image Feature Extraction"
+        in: [image]
+        out: [vector]
+        gen: false
+        what: "Turns an image into a list of numbers (an embedding) that captures its content, so similar images have similar vectors."
+        health: "Content-based retrieval: finding past pathology slides that look like the current one, to support diagnosis and teaching."
+      - name: "Image-to-Text"
+        in: [image]
+        out: [text]
+        gen: true
+        what: "Writes a caption or extracts text from an image (including OCR, reading printed or handwritten text)."
+        health: "Reading medication labels aloud for visually impaired patients, or captioning images in a teaching collection."
+      - name: "Image-to-Image"
+        in: [image]
+        out: [image]
+        gen: true
+        what: "Transforms one image into another: denoising, super-resolution, colourisation, style or contrast conversion."
+        health: "Denoising low-dose CT to reduce radiation exposure, sharpening MRI, or normalising stain colours across pathology labs."
+      - name: "Text-to-Image"
+        in: [text]
+        out: [image]
+        gen: true
+        what: "Creates an image from a text description."
+        health: "Illustrations for patient-education material; in research, synthetic images, which must be validated carefully."
+      - name: "Unconditional Image Generation"
+        in: []
+        out: [image]
+        gen: true
+        what: "Generates new, realistic images that resemble a training set, without any prompt."
+        health: "Synthetic medical images to augment rare conditions or share data with less privacy risk, a research area with open validation questions."
+      - name: "Image-to-Video"
+        in: [image]
+        out: [video]
+        gen: true
+        what: "Generates a short video that starts from a given image."
+        health: "Educational animations derived from a single diagram or anatomical drawing."
+      - name: "Text-to-Video"
+        in: [text]
+        out: [video]
+        gen: true
+        what: "Generates a video clip from a text description."
+        health: "Draft explainer videos for patients, such as how to use an inhaler, which still require expert review for accuracy."
+      - name: "Video Classification"
+        in: [video]
+        out: [label]
+        gen: false
+        what: "Assigns a label to a whole video clip, using motion over time as well as appearance."
+        health: "Detecting falls or seizures in monitoring video, or identifying the view in an echocardiogram."
+      - name: "Video-to-Video"
+        in: [video]
+        out: [video]
+        gen: true
+        what: "Transforms a video into another video: enhancement, stabilisation, style change or anonymisation."
+        health: "Stabilising and enhancing endoscopy video, or blurring faces in recordings used for research."
+      - name: "Text-to-3D"
+        in: [text]
+        out: ["3d"]
+        gen: true
+        what: "Creates a 3D object or scene from a text description."
+        health: "Quick 3D anatomy models for teaching and patient explanations."
+      - name: "Image-to-3D"
+        in: [image]
+        out: ["3d"]
+        gen: true
+        what: "Builds a 3D model from one or more photographs."
+        health: "Estimating limb shape from photos for prosthetics and orthotics, or measuring wound volume over time."
+
+  - key: nlp
+    name: "Natural Language Processing"
+    blurb: "Models that read, understand and write human language."
+    tasks:
+      - name: "Text Classification"
+        in: [text]
+        out: [label]
+        gen: false
+        what: "Assigns a label to a piece of text, such as topic, sentiment or urgency."
+        health: "Triaging patient portal messages by urgency, or flagging possible adverse drug events in incident reports."
+      - name: "Token Classification"
+        in: [text]
+        out: [label]
+        gen: false
+        what: "Labels individual words. The classic example is named-entity recognition: finding names, places, drugs, dates."
+        health: "Extracting medications, doses and diagnoses from free-text notes, and de-identifying records by finding patient names."
+      - name: "Zero-Shot Classification"
+        in: [text]
+        out: [label]
+        gen: false
+        what: "Classifies text into categories you choose at run time, without labelled training examples."
+        health: "Sorting thousands of patient feedback comments into themes (waiting time, communication, pain) on day one."
+      - name: "Question Answering"
+        in: [text]
+        out: [text]
+        gen: false
+        what: "Finds the answer to a question inside a given passage (extractive QA). The answer is copied from the text, not invented."
+        health: "Pointing to the exact sentence with a contraindication inside a long drug leaflet."
+      - name: "Table Question Answering"
+        in: [table, text]
+        out: [text]
+        gen: false
+        what: "Answers natural-language questions about a table, including simple aggregations."
+        health: "\"What was the highest HbA1c value last year?\" over a patient's lab results table."
+      - name: "Summarization"
+        in: [text]
+        out: [text]
+        gen: true
+        what: "Condenses a long text into a shorter one that keeps the key information."
+        health: "Summarising long patient histories before an appointment, or the findings of research papers."
+      - name: "Translation"
+        in: [text]
+        out: [text]
+        gen: true
+        what: "Converts text from one language to another."
+        health: "Translating discharge instructions for patients who speak another language, with professional review for safety-critical content."
+      - name: "Text Generation"
+        in: [text]
+        out: [text]
+        gen: true
+        what: "Continues or responds to text. This is what chat assistants and large language models do."
+        health: "Drafting referral letters or patient-friendly explanations. It can state false things confidently (\"hallucinate\"), so outputs need checking."
+      - name: "Fill-Mask"
+        in: [text]
+        out: [text]
+        gen: false
+        what: "Predicts a hidden word in a sentence (\"The patient was given [MASK] for the pain\"). It is mainly a way to pre-train language models."
+        health: "Pre-training models on biomedical literature so they learn the vocabulary of medicine before being fine-tuned."
+      - name: "Feature Extraction"
+        in: [text]
+        out: [vector]
+        gen: false
+        what: "Turns text into a vector (embedding) that captures its meaning, so texts about the same thing end up close together."
+        health: "Semantic search over clinical guidelines, and the retrieval step that lets a chatbot cite trusted sources."
+      - name: "Sentence Similarity"
+        in: [text]
+        out: [score]
+        gen: false
+        what: "Scores how similar in meaning two pieces of text are."
+        health: "Matching patient records to clinical-trial eligibility criteria, or finding duplicate records."
+      - name: "Text Ranking"
+        in: [text]
+        out: [ranking]
+        gen: false
+        what: "Orders a list of documents by relevance to a query (often called re-ranking)."
+        health: "Putting the most relevant guideline passages first before a clinician, or an assistant, reads them."
+
+  - key: audio
+    name: "Audio"
+    blurb: "Models that hear, transcribe or produce sound."
+    tasks:
+      - name: "Automatic Speech Recognition"
+        in: [audio]
+        out: [text]
+        gen: false
+        what: "Transcribes spoken language into text."
+        health: "Dictation and ambient documentation, so clinicians spend less time typing and more time with patients."
+      - name: "Text-to-Speech"
+        in: [text]
+        out: [audio]
+        gen: true
+        what: "Reads text aloud in a natural-sounding voice."
+        health: "Accessibility for patients with low vision or literacy, and voice banking for people losing their speech, as in ALS."
+      - name: "Text-to-Audio"
+        in: [text]
+        out: [audio]
+        gen: true
+        what: "Generates sounds or music (not speech) from a description."
+        health: "Relaxation soundscapes for therapy settings, and research on turning physiological data into sound (sonification)."
+      - name: "Audio-to-Audio"
+        in: [audio]
+        out: [audio]
+        gen: true
+        what: "Transforms audio: removing noise, separating sources, enhancing speech."
+        health: "Cleaning digital stethoscope recordings, or improving speech clarity in hearing aids."
+      - name: "Audio Classification"
+        in: [audio]
+        out: [label]
+        gen: false
+        what: "Assigns a label to a sound clip."
+        health: "Detecting heart murmurs, classifying cough sounds, or screening for sleep apnoea from snoring recordings."
+      - name: "Voice Activity Detection"
+        in: [audio]
+        out: [label]
+        gen: false
+        what: "Marks which parts of a recording contain speech."
+        health: "Preparing consultation recordings for transcription, or measuring speech and pause timing in neurological assessments."
+
+  - key: tabular
+    name: "Tabular and Time Series"
+    blurb: "Models for spreadsheets, databases and signals over time, the most common data in hospitals."
+    tasks:
+      - name: "Tabular Classification"
+        in: [table]
+        out: [label]
+        gen: false
+        what: "Predicts a category for each row of a table from its columns."
+        health: "Predicting readmission or sepsis risk from vital signs, lab values and demographics."
+      - name: "Tabular Regression"
+        in: [table]
+        out: [number]
+        gen: false
+        what: "Predicts a continuous number for each row of a table."
+        health: "Estimating length of stay or an individual drug dose."
+      - name: "Time Series Forecasting"
+        in: [timeseries]
+        out: [number]
+        gen: false
+        what: "Predicts future values of a signal from its past values."
+        health: "Forecasting glucose levels for people with diabetes, ward bed occupancy, or deterioration from vital-sign trends."
+
+  - key: decision
+    name: "Reinforcement Learning and Robotics"
+    blurb: "Models that act: they choose actions and learn from the consequences."
+    tasks:
+      - name: "Reinforcement Learning"
+        in: [environment]
+        out: [action]
+        gen: false
+        what: "An agent learns which actions to take by trial and error, guided by a reward signal rather than labelled answers."
+        health: "Research on dynamic treatment strategies, such as insulin or ventilator settings, explored safely in simulators and digital twins."
+      - name: "Robotics"
+        in: [environment, image]
+        out: [action]
+        gen: false
+        what: "Turns sensor input (cameras, force, position) into motor commands for a physical robot."
+        health: "Assistance in robotic surgery, rehabilitation exoskeletons, and logistics robots that deliver medication in hospitals."
+
+  - key: other
+    name: "Other"
+    blurb: "Data with structure that does not fit a table or a grid."
+    tasks:
+      - name: "Graph Machine Learning"
+        in: [graph]
+        out: [label, number]
+        gen: false
+        what: "Learns from networks of connected things: atoms in a molecule, proteins that interact, people in a contact network."
+        health: "Predicting a molecule's properties in drug discovery, or modelling protein interactions and disease spread."

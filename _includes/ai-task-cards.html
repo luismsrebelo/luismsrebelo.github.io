@@ -1,0 +1,19 @@
+{%- assign L = site.data.ai_tasks.labels -%}
+<div class="aitasks" id="ai-task-list">
+{%- for cat in site.data.ai_tasks.categories %}
+<section class="aitasks__cat" data-cat="{{ cat.key }}" aria-labelledby="cat-{{ cat.key }}">
+<h2 id="cat-{{ cat.key }}">{{ cat.name }}</h2>
+<p class="aitasks__blurb">{{ cat.blurb }}</p>
+<div class="aitasks__grid">
+{%- for t in cat.tasks %}
+<article class="aitask" id="{{ t.name | slugify }}" data-cat="{{ cat.key }}" data-in="{{ t.in | join: ' ' }}" data-out="{{ t.out | join: ' ' }}" data-gen="{% if t.gen %}1{% else %}0{% endif %}">
+<h3 class="aitask__name">{{ t.name }}</h3>
+<p class="aitask__io">{% if t.in.size == 0 %}<span class="chip chip--none">nothing (random noise)</span>{% endif %}{% for m in t.in %}<span class="chip m-{{ m }}">{{ L[m] }}</span>{% unless forloop.last %}<span class="aitask__plus">+</span>{% endunless %}{% endfor %}<span class="aitask__arrow" aria-label="produces">→</span>{% for m in t.out %}<span class="chip o-{{ m }}">{{ L[m] }}</span>{% endfor %}<span class="aitask__kind">{% if t.gen %}generates{% else %}analyses{% endif %}</span></p>
+<p class="aitask__what">{{ t.what }}</p>
+<p class="aitask__health"><strong>In healthcare:</strong> {{ t.health }}</p>
+</article>
+{%- endfor %}
+</div>
+</section>
+{%- endfor %}
+</div>
