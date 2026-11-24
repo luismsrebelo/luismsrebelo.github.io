@@ -1,0 +1,181 @@
+/* Widgets for the "Local LLMs explained" blog post. Builds on experiments.css. */
+
+.mlv-demo[data-llm]:not(.is-ready) { min-height: 120px; }
+
+/* Name decoder */
+.llm-name {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 1.05em;
+  margin: 0.4em 0 0.8em;
+}
+.llm-name__part {
+  --c: #2f7f93;
+  font: inherit;
+  padding: 0.35em 0.45em;
+  border: 2px solid var(--c);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--global-text-color);
+  cursor: pointer;
+}
+.llm-name__part.is-active,
+.llm-name__part:hover,
+.llm-name__part:focus-visible {
+  background: var(--c);
+  color: #fff;
+}
+.llm-name__card {
+  --c: #2f7f93;
+  border-left: 4px solid var(--c);
+  padding: 0.5em 0.9em;
+  font-size: 0.85em;
+  min-height: 7.5em;
+}
+.llm-name__title { color: var(--c); }
+.llm-name__card p { margin: 0.3em 0 0; }
+
+/* Memory bar */
+.llm-mem {
+  position: relative;
+  display: flex;
+  height: 38px;
+  margin: 2.2em 0 0.6em;
+  border: 1px solid var(--global-border-color);
+  border-radius: 6px;
+}
+.llm-mem__seg { height: 100%; transition: width 0.25s ease; }
+.llm-mem__seg:first-child { border-radius: 5px 0 0 5px; }
+.llm-mem__vram {
+  position: absolute;
+  top: -1.9em;
+  bottom: -6px;
+  border-left: 2px dashed var(--global-text-color);
+  transition: left 0.25s ease;
+}
+.llm-mem__vram span {
+  position: absolute;
+  top: 0;
+  left: 4px;
+  font-size: 0.72em;
+  white-space: nowrap;
+  color: var(--global-text-color);
+}
+.llm-mem__legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3em 1.1em;
+  font-size: 0.78em;
+  align-items: center;
+}
+.llm-mem__legend i {
+  display: inline-block;
+  width: 0.8em;
+  height: 0.8em;
+  border-radius: 2px;
+  margin-right: 0.35em;
+  vertical-align: -0.05em;
+}
+
+/* MoE */
+.llm-moe__tokens {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 0.8em;
+  margin-bottom: 0.7em;
+}
+.llm-moe__tokens span {
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+  border: 1px solid var(--global-border-color);
+  white-space: pre;
+}
+.llm-moe__tokens span.is-active { background: #e07a2f; border-color: #e07a2f; color: #fff; }
+.llm-moe__grid {
+  display: grid;
+  grid-template-columns: repeat(16, 1fr);
+  gap: 3px;
+  max-width: 520px;
+}
+.llm-moe__grid span {
+  aspect-ratio: 1;
+  border-radius: 3px;
+  background: var(--global-border-color);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.llm-moe__grid span.is-on { background: #e07a2f; transform: scale(1.12); }
+.llm-moe__compare { margin-top: 0.8em; font-size: 0.78em; }
+.llm-moe__compare div {
+  display: grid;
+  grid-template-columns: 11.5em 1fr 4em;
+  align-items: center;
+  gap: 0.6em;
+  margin: 0.3em 0;
+}
+.llm-moe__compare b { display: block; height: 12px; border-radius: 3px; }
+.llm-moe__compare em { font-style: normal; font-variant-numeric: tabular-nums; }
+@media (max-width: 500px) {
+  .llm-moe__compare div { grid-template-columns: 8em 1fr 3.5em; }
+}
+
+/* Sampler */
+.llm-samp__out {
+  font-size: 0.95em;
+  margin: 0 0 0.6em;
+}
+.llm-samp__out mark {
+  background: #e07a2f;
+  color: #fff;
+  padding: 0 0.2em;
+  border-radius: 3px;
+}
+.llm-samp__row {
+  display: grid;
+  grid-template-columns: 6.5em 1fr 3.6em;
+  gap: 0.6em;
+  align-items: center;
+  font-size: 0.8em;
+  margin: 3px 0;
+}
+.llm-samp__row.is-out { opacity: 0.4; }
+.llm-samp__tok { font-family: ui-monospace, SFMono-Regular, Consolas, monospace; text-align: right; }
+.llm-samp__track { position: relative; height: 16px; }
+.llm-samp__track i,
+.llm-samp__track b {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.2s ease;
+}
+.llm-samp__raw { border: 1.5px dashed var(--global-text-color-light); box-sizing: border-box; }
+.llm-samp__track b { background: #2f7f93; opacity: 0.85; }
+.llm-samp__pct { font-variant-numeric: tabular-nums; text-align: right; }
+
+/* Static bar chart (quantisation sizes) */
+.llm-bars { margin: 1em 0 1.5em; font-size: 0.8em; }
+.llm-bars__row {
+  display: grid;
+  grid-template-columns: 5.5em 1fr 5.5em;
+  gap: 0.6em;
+  align-items: center;
+  margin: 4px 0;
+}
+.llm-bars__row code { background: none; padding: 0; }
+.llm-bars__bar { height: 18px; border-radius: 3px; background: #2f7f93; }
+.llm-bars__row.is-you .llm-bars__bar { background: #e07a2f; }
+.llm-bars__row span:last-child { font-variant-numeric: tabular-nums; }
+.llm-bars__note { font-size: 0.9em; color: var(--global-text-color-light); }
+
+/* Pipeline diagram */
+.llm-flow svg { width: 100%; height: auto; color: var(--global-text-color); }
+.llm-flow .box { fill: none; stroke: currentColor; stroke-width: 1.5; }
+.llm-flow .t { fill: currentColor; font: 12px system-ui, sans-serif; }
+.llm-flow .s { fill: currentColor; font: 10px system-ui, sans-serif; opacity: 0.75; }
+.llm-flow .a { stroke: currentColor; stroke-width: 1.5; fill: none; marker-end: url(#llm-arrow); }
+.llm-flow figcaption { font-size: 0.8em; }
